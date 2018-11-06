@@ -1,0 +1,21 @@
+
+body{
+    
+
+    background-color: rgb(170, 231, 255);
+   
+
+}
+
+
+.header{
+    background-image: url(train.jpg);
+
+ height: 30vw; background-repeat: no-repeat; padding: -6vw; 
+ height: 35vw;
+ background-position: center;
+background-size: cover;
+ 
+   
+
+}

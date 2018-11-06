@@ -1,0 +1,46 @@
+
+body{
+    
+
+   background-image: linear-gradient(to right, rgb(159, 228, 255) , rgb(0, 101, 253), rgb(0, 44, 139), rgb(143, 229, 255));
+   
+
+}
+
+h1{
+    
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+text-align: center;
+ font-size: 3vw;
+ padding: 12vw;
+ font-style: oblique;
+ font-variant: small-caps;
+ color: rgb(6, 0, 94);
+text-shadow: 1.2px 1px black;
+
+
+}
+
+
+h2{
+    text-align: center;
+    font-size: 5vw;
+    color: white;
+    
+      }
+    
+
+
+
+.header{
+    background-image: url(train.jpg);
+
+ height: 30vw; background-repeat: no-repeat;
+ background-image: -moz-element();
+ height: 35vw;
+ background-position: center;
+background-size: cover;
+ 
+   
+
+}
