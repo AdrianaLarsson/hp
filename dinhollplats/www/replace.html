@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/javascript" src="javascript.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>replace</title>
+</head>
+
+<body>
+
+    
+    <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång</p>
+     
+
+    <ul id="departures">Pendeltåg<br><br></ul><br>
+
+
+
+
+            <script language="javascript">
+       
+
+
+
+
+
+
+     //Pendeltåg Barkarby
+        
+     function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        const ul = document.getElementById('departures');
+        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=23';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures = data.ResponseData.Trains;
+            return departures.map(function (departure) {
+              let li = createNode('li'),
+                span = createNode('span');
+        
+        
+              span.innerHTML +=  " " + 'Tåg' + " "+ departure.LineNumber + " " +    ' ' + 'mot' + ' ' + departure.Destination + '   går om ' +  tiden(departure.DisplayTime) ;
+        
+          
+              append(li, span);
+              append(ul, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+        // Bussar från barakarby station
+        function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+      
+
+        var hej = "";
+        
+        document.getElementById("demo").innerHTML = hej;
+        const ul2 = document.getElementById('buss');
+        
+        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures2 = data.ResponseData.Buses;
+            return departures2.map(function (departure) {
+              let li = createNode('li'),        
+                span = createNode('span');
+        
+        
+              buss.innerHTML += `${ departure.LineNumber +  'mot'+  departure.Destination + ':' + departure.DisplayTime + tiden(departure.DisplayTime)}` ;
+         
+        
+              append(li, span);
+              append(ul2, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+
+
+
+
+
+
+var DisplayTime;
+
+for(i=0; i <= 4; i++)
+{
+  DisplayTime += i + " " + tiden(i) + "<br>";
+}
+document.getElementById('tabell').innerHTML = departure.DisplayTime ;
+
+function tiden(tabell)
+{
+    var level = "";
+    switch (tabell)
+    {
+
+
+            case "Nu":
+            level = " nu, Hejdå";
+            break;
+
+        case  "1 min":
+            level = "1 min kvar";
+            break;
+
+        case "2 min":
+            level = "2";
+            break;
+
+            case "3 min":
+            level = "3";
+            break;
+            case "4 min":
+            level = "4";
+            break;
+            case "5 min":
+            level = "5, spring!";
+            break;
+            case "7 min":
+            level = "7, gå ut genom dörren";
+            break;
+              case "6 min":
+            level = "6";
+            break;
+
+            case "9 min":
+            level = "9";
+            break;
+            case "8 min":
+            level = "8";
+            break;
+            case "10 min":
+            level = "10, Börja klä på dig";
+            break;
+            case "11 min":
+            level = "11";
+            break;
+            case "12 min":
+            level = "12, börja göra dig orning till Pendeln";
+            break;
+            case "13 min":
+            level = "13 ";
+            break;
+            case "14 min":
+            level = "14";
+            break;
+            case "15 min":
+            level = "15";
+            break;
+            case "16 min":
+            level = "16";
+            break;
+            case "17 min":
+            level = "17";
+            break;
+            case "18 min":
+            level = "18";
+            break;
+            case "19 min":
+            level = "19";
+            break;
+            case "20 min":
+            level = "20";
+            break; 
+            case "21 min":
+            level = "20";
+            break;
+            case "22 min":
+            level = "22";
+            break;
+            case "23 min":
+            level = "23";
+            break;
+            case "24 min":
+            level = "24";
+            break;
+             case "25 min":
+            level = "25";
+            break;
+            case "26 min":
+            level = "26";
+            break;
+        default: 
+            level = "  ";
+            break;
+
+    }
+    return level;
+    
+}
+// -------
+
+ //TIMER
+  
+ // räknar ner till de datum som timern ska sluta
+ var DisplayTime = new Date( "Jan 5, 2019 15:37:25" ).getTime();
+ 
+ // Uppdaterar varje minut
+ var x = setInterval(function() {
+ 
+     // Dagens tid
+     var now = new Date().getTime();
+     
+     // Tiden mellan Displaytime och nu?
+     var distance = DisplayTime - now;
+     
+     // Tisräkning minuter och seccunder. ner
+ 
+     var minutes = Math.floor((distance % (200 * 60 * 60)) / (1000 * 60));
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+     
+     // Output the result in an element with id="demo"
+     document.getElementById("raknaned").innerHTML = +  minutes + " Min " + seconds + " Sec ";
+     
+     // If the count down is over, write some text 
+     if (DisplayTime == "10 min" ) {
+         clearInterval(window.location.reload(5));
+         document.getElementById("raknaned").innerHTML = "";
+     }
+ },1000 );  
+
+
+
+
+
+
+      </script>
+      
+<p id="tabell"></p>
+<div id="demo">  
+    </body>
+    </html>

@@ -1,0 +1,236 @@
+  
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/javascript" src="javascript.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Liljeholmen Tunnelbana</title>
+</head>
+
+<body>
+    <h3>Liljeholmen Tunnelbana</h3>
+
+<!---Klockans function-->
+  <body onload="changeTime()">
+
+      <div id="timme">00</div><div id="minut">00</div><div id="secund">00</div>
+    <br>
+    <br>
+    <br>
+
+    <!---Länkar till barkarby station och till tunnelbanan i lijeholmen, val meny-->
+    
+    <select name="stationval" id="val">
+        <option value="inget" selected="selected">Välj din Station</option>
+        <option value ="#">Stockholm City<option>
+        <option value ="barkarbystation.html">Barkarby station</option>
+        <option value ="liljeholmen.html"> Liljeholmen Tunnelbana<option>
+        
+      
+    </select>
+  </form>
+
+  <!---timer som räknar ned-->
+        
+     <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång</p>
+        <form name="stationer">
+    
+
+
+            <ul id="tunnelbana">Tunnelbana</ul>
+
+
+
+       
+
+
+
+  
+     <!---Javascript map api key-->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+     async defer></script> 
+     <!---Direction api key-->
+     <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZwH5T5o38qUfydWC4POwyerZ5VSLMjbo&callback=initMap">
+     </script>
+
+
+
+
+
+  <script language="javascript">
+
+ 
+
+  function createNode(element) {
+      return document.createElement(element);
+    }
+
+    function append(parent, el) {
+      return parent.appendChild(el);
+    }
+
+    const ul3 = document.getElementById('tunnelbana');
+    const url4 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9294&timewindow=30';
+    fetch(url4)
+      .then((resp) => resp.json())
+      .then(function (data) {
+        let departures3 = data.ResponseData.Metros;
+        return departures3.map(function (departure) {
+          let li = createNode('li'),
+            img = createNode('img'),
+            span = createNode('span');
+
+          span.innerHTML = `${departure.GroupOfLine + ":" + departure.LineNumber  + departure.DisplayTime }`;
+          append(li, img);
+          append(li, span);
+          append(ul3, li);
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+// kod för klockan!
+  function changeTime()
+{
+var today = new Date();
+
+var timme = today.getHours();
+var minut = today.getMinutes();
+var secund = today.getSeconds();
+
+timme = checkTime(timme);
+minut = checkTime(minut);
+secund = checkTime(secund);
+// visar timme minut och sekund
+document.getElementById('timme').innerHTML = timme;
+document.getElementById('minut').innerHTML = minut;
+document.getElementById('secund').innerHTML = secund;
+
+
+
+}
+//intervall för klockan och kollar tiden
+setInterval("changeTime()", 1000);
+
+function checkTime(id){
+if (id < 10)
+id = "0" + id;
+{
+
+return id;
+
+}
+}
+
+   //TIMER
+  
+ // räknar ner till de datum som timern ska sluta
+ var DisplayTime = new Date( "Jan 5, 2019 15:37:25" ).getTime();
+ 
+ // Uppdaterar varje minut
+ var x = setInterval(function() {
+ 
+     // Dagens tid
+     var now = new Date().getTime();
+     
+     // Tiden mellan Displaytime och nu?
+     var distance = DisplayTime - now;
+     
+     // Tisräkning minuter och seccunder. ner
+ 
+     var minutes = Math.floor((distance % (200 * 60 * 60)) / (1000 * 60));
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+     
+     // Output the result in an element with id="demo"
+     document.getElementById("raknaned").innerHTML = +  minutes + " Min " + seconds + " Sec ";
+     
+     // If the count down is over, write some text 
+     if (DisplayTime < 10 ) {
+         clearInterval(window.location.reload(5));
+         document.getElementById("raknaned").innerHTML = minutes;
+     }
+ },1000 );  
+
+
+// val av station från user
+var stationval = document.getElementById('val');
+stationval.onchange = function() {
+// väljer station ssom står i boxen ex liljeolmen
+  var userVal = this.options[this.selectedIndex];
+//öppnas nytt fönster pga att user väljer
+  if (userVal.value != "inget" ){
+window.open(userVal.value, " Hej hopp","");
+
+  }
+}
+
+
+
+
+
+stationval.onchange = function() {
+// väljer station ssom står i boxen ex liljeolmen
+  var userVal = this.options[this.selectedIndex];
+//öppnas nytt fönster pga att user väljer
+  if (userVal.value != "inget" ){
+window.open(userVal.value, " Hej hopp","");
+
+  }
+}
+
+
+
+
+  </script>
+     <div id="demo">
+        <div id="demo1">
+<!--Div för att jag ska kuna styla den enskilt (ganvgag)-->
+          <div name="gangvag">Lägg till gånväg</div>
+          <!--Val av gångväg till olika stationer och från mig och skolan, start position-->
+          <b>Från: </b>
+          <select id="start">
+            <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
+            <option value="Liljeholmstorget 7, Stockholm">STI - Stockholm Tekniska Institut</option>
+             <!--Val av gångväg till olika stationer och från mig och skolan, slut position-->
+          </select>
+          <b>Till: </b>
+          <select id="end">
+              <option value="Barkarby Station, Järfälla">Barkarby Station</option>
+              <option value="Liljeholmen Tunnelbana, Liljeholmen">Liljeholmen, Tunnelbana </option>
+              <option value="Södra Station City, Stockholm">Södra Station</option>
+              <option value="Solna Station, Solna">Märsta Station</option>
+      
+          </select>
+          </div>
+        
+        
+  <div id="map"></div>              
+    <div id="map">
+      <div id="demo"></div>
+
+
+
+</body>
+</html>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,21 +1,145 @@
+*{
+  margin: 0px;
+padding: 0px;
+ 
+}
+
+
 
 body{
-    
 
-    background-color: rgb(170, 231, 255);
+
+  
+   background-image: linear-gradient(to right, rgb(159, 228, 255) , rgb(0, 101, 253), rgb(0, 44, 139), rgb(143, 229, 255));
    
 
 }
+
+h1{
+    
+font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+text-align: left;
+ font-size: 4vw;
+ padding: 70px;
+ font-style: oblique;
+ font-variant: small-caps;
+ color: rgb(8, 0, 83);
+text-shadow: 1.2px  rgb(0, 0, 0);
+box-shadow: 30px;
+
+
+}
+
+
+h2{
+    text-align: center;
+    font-size: 5vw;
+    color: white;
+    
+      }
+    
+
 
 
 .header{
-    background-image: url(train.jpg);
 
- height: 30vw; background-repeat: no-repeat; padding: -6vw; 
+
+
+   background-repeat: no-repeat;
+ background-image: -moz-element();
  height: 35vw;
  background-position: center;
+
+ background: linear-gradient(rgba(171, 255, 238, 0.7), rgba(95, 60, 255, 0.7)), url(train.jpg); height: 50vw; 
+-webkit-background-size: cover;
 background-size: cover;
- 
-   
+
+
 
 }
+
+.article {
+
+  float: center;
+ 
+  
+    }
+
+
+.form {
+
+  float: right;
+margin-top: 10vw;
+  margin-right: 10vw;
+ 
+  
+    }
+    input {
+      
+width: 100%;
+height: 10vw;
+        float: right;
+  
+        margin-right: 10vw;
+       box-sizing: border-box;
+border-width: 20%;
+       border:solid;
+border-radius: 70vw; 
+      color: rgb(101, 171, 252);
+          }
+        
+
+          .eller {
+padding-left: 45px;
+            float: center;
+         color: white;
+           
+            
+              }
+
+              .eller {
+                padding-left: 70px;
+                            float: center; 
+                            font-size: 5vw;
+                          
+               
+                           
+                           
+                            
+                              }
+                  
+
+  
+                              input[type=button1] {
+                                background: linear-gradient(rgb(231, 231, 255),rgb(87, 87, 255)), rgb(131, 223, 247);
+                       text-align: center; color: white;
+                       font-size: 4vw;
+                       height: 15vw;
+                       border-width: 30%;
+                                }
+                                .loggain {
+                                  padding-left:-5px;
+                                              float: center;
+                                           color: white;
+                                           font-size: 5vw;
+                                
+                                             
+                                              
+                                                }
+
+                                                .registrera {
+                                        
+                                                              float: left;
+                                                           color: rgb(0, 0, 0);
+                                                           font-size: 3.5vw;
+                                                
+                                                     
+                                                           max-width: 100vw;
+                                                           height: 2vw;
+                                                           padding-left: 10vw;
+                                                    padding-top: 10vw;
+                                                              
+                                                                }
+                                           
+                                                                

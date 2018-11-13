@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/javascript" src="javascript.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Server date/time</title>
+</head>
+<style>
+#map{
+  height: 30vw;
+  width: 50%;
+}
+</style>
+<body>
+
+  
+
+    <body onload="changeTime()">
+
+        <div id="timme">00</div>:<div id="minut">00</div>:<div id="secund">00</div>
+
+    
+    <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång 
+     
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+        async defer></script> 
+
+
+
+    </p> 
+<br>
+<br>
+
+    
+    <br>
+
+    <br>
+
+
+
+
+<br>
+<br>
+        <ul id="departures">Pendeltåg<br><br></ul>
+
+        <p id="demo">Buss2</p><br>
+        <ul id="buss">Bussar<br><br></ul>
+        <p id="demo3"></p><br>
+        
+        <br>
+        <br>
+        
+        
+        
+        <script language="javascript">
+          //Pendeltåg Barkarby
+        
+          function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        const ul = document.getElementById('departures');
+        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures = data.ResponseData.Trains;
+            return departures.map(function (departure) {
+              let li = createNode('li'),
+                span = createNode('span');
+        
+        
+           //   span.innerHTML += 'Tåg'+ +  '43 ' + ' ' + 'mot' + ' ' + departure.Destination + ' : ' + departure.DisplayTime ;
+        
+          
+              append(li, span);
+              append(ul, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+        function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        var hej = "";
+        
+        document.getElementById("demo").innerHTML = hej;
+        const ul2 = document.getElementById('buss');
+        
+        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures2 = data.ResponseData.Buses;
+            return departures2.map(function (departure) {
+              let li = createNode('li'),        
+                span = createNode('span');
+        
+        
+           //   buss.innerHTML += `${   departure.LineNumber + ' '  + ' mot '+ '  ' + departure.Destination + ' : ' + departure.DisplayTime}` ;
+              // ga(departure.DisplayTime)}` ;
+        
+              append(li, span);
+              append(ul2, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+
+//setTimeout(function(){
+  //window.location.reload(1);
+//},100000);
+
+
+        
+
+
+   
+
+        
+      //  function ga(DisplayTime){
+        
+        //  if(DisplayTime == "5"){
+        
+        //}
+        
+       //return "Fem minuter kvar";
+        
+        
+        
+        //}
+        
+
+
+
+  </script>
+
+
+
+    <div id="navbar"><span>google maps</span></div>
+    <div id="wrapper">
+
+      
+
+        <b>Val av station: </b>
+
+        <form>
+            <select id="val" onchange="stationval()">
+              <option>Barkarby station</option>
+              <option>Stockholm City</option>
+              
+            </select>
+          </form>
+
+          <p id="demo5"></p>
+
+
+
+          
+    <div id="map">
+
+
+      
+            <div id="demo">
+                    <div id="demo1">
+
+
+                    
+
+</body>
+</html>

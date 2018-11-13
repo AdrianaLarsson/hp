@@ -1,0 +1,100 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<style>
+
+#map-canvas{
+width: 400px;
+height: 400px;
+
+
+
+</style>
+
+<title>My google map</title>
+</head>
+<body>
+
+
+<input type="text" id="mapsearch">
+<div id="map-canvas"></div>
+
+
+
+
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+  type="text/javascript"></script>
+
+<script>
+
+
+    var x = document.getElementById("demo");
+    
+    function getLocation() {
+        if (navigator.geolocation) {
+            jlocation.getCurrentPosition(succes, failure);
+        } else { 
+            x.innerHTML = "wdkmsdmsmsikdmlsmkldsm";
+        }
+    }
+    
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + minLong + minLat + position.coords.latitude + 
+        "<br>Longitude: " + marker  + position.coords.longitude + jlocation;
+    }
+
+
+
+function initMap(){
+var options = {
+zoom:10,
+center:{lat:59.33258, lng: 18.0649},
+}
+
+var map = new google.maps.Map(document.getElementById('map'), options);
+
+}
+
+
+</script>
+
+</body>
+</html>
+/*
+// kod för att får ett fönster komma upp och fråga efter nuvarande plats på kartan.
+    var jlocation = navigator.geolocation;
+     
+    jlocation.getCurrentPosition(succes, failure)
+    
+    function succes(position)
+    // min latitud och min longitud i variabler
+    {
+  
+    // cordinater
+   
+    
+     var mapOptions = {
+    zoom:11,
+    // latitud och longitud i siffror
+    position: {lat:59.33258, lng: 18.0649},
+    
+    mapTypeId: google.maps.MaptypeId,
+    
+     }
+    
+    var map = new google.maps.Map(document.getElementById("demo1") );
+   
+    
+    
+    
+    }
+    
+    function failure(){}
+    
+*/
+
+

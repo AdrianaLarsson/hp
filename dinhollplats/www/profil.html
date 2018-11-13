@@ -5,7 +5,7 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         
         <link rel="stylesheet" type="text/css" href="design.css">
-        <title>Blank App</title>
+        <title>Profil Inställningar</title>
     </head>
     <body>
         <script type="text/javascript" src="javascript.js"></script>
@@ -14,6 +14,67 @@
 
 <h2>Profil Inställningar </h2>
 
+
+
+
+<p id="demo"></p>
+<script>
+   
+    
+
+
+
+
+
+
+// kod som tar upp gps och visar på kartan vart du är, kommer ett fönster och frågar om du vill att webbläsaren kan ta emot din platsinfo 
+  var d = document.getElementById("demo");
+   function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            d.innerHTML = "";
+        }
+    }
+    
+    function showPosition(position) {
+        d.innerHTML = "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+    }
+
+    
+    
+    if (navigator.geolocation) { 
+     navigator.geolocation.getCurrentPosition(function(position) {  
+   //cordinater som tar upp vart du är (longitud och latitud)
+       var point = new google.maps.LatLng(position.coords.latitude, 
+     position.coords.longitude);
+   
+       // 
+       var map = new google.maps.Map(document.getElementById('mapprofil'), {
+           // zomar in och ger positionen på kartan ur det ska se ut
+          zoom: 15,
+         center: point,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+       });
+   
+       //marker som visar vart du är
+       new google.maps.Marker({
+         position: point,
+         map: map,
+         title: "Du befinner dig här"
+       });
+     }); 
+   } 
+   else {
+     alert('Får jag veta din plats?');
+   } 
+ </script>
+
+<div id="mapprofil">
+   <!---Javascript map api key-->
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+   async defer></script> 
 
 
     </body>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<style>
+#map{
+    height: 400px;
+    width: 100%;
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="navbar"><span>google maps</span></div>
+<div id="wrapper">
+<div id="map">
+        <div id="demo">
+                <div id="demo1">
+<button id="location-button">Tryck</button>
+                    <div id="output"></div>
+</div>
+
+  <script>
+
+
+  // mappen funktion
+  var map;
+  function initMap() {
+      map = new google.maps.Map(document.getElementById('map'),{
+
+          //latitud longitud, vart jag är
+          center:{lat:59.33258, lng:18.0649},
+          zoom: 9,
+          });
+
+// marker som visar vart exakt
+          var marker = new google.maps.Marker({
+              position: {lat:59.33258, lng:18.0649},
+              map: map,
+              // text som säger vart jag är
+              title: 'Hejhej',
+              druggle: true
+          });
+
+           }
+
+
+var x = document.getElementById("demo");
+    
+    function getLocation() {
+        if (navigator.geolocation) {
+            jlocation.getCurrentPosition(succes, failure);
+        } else { 
+            x.innerHTML = "wdkmsdmsmsikdmlsmkldsm";
+        }
+    }
+    function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+    var img_url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap";
+
+    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+}
+
+    
+
+
+
+
+  
+   
+  </script>
+
+
+
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+  async defer></script>
+
+
+
+</div>
+</body>
+</html>
