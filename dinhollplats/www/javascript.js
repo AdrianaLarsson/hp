@@ -19,11 +19,12 @@ function initMap() {
       origin: document.getElementById('start').value,
       destination: document.getElementById('end').value,
       travelMode: google.maps.TravelMode.WALKING
+      
     }, function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
       } else {
-        window.alert('Directions request failed due to ' + status);
+        window.alert('Acceptera för att lägga till gångväg');
       }
     });
   }

@@ -51,9 +51,11 @@
         </select>
       </form>
 
-      <div class="timer">
+
+
+     <!-- <div class="timer">
           <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång</p>
-         </div>
+         </div>-->
   
 
     <br>
@@ -75,25 +77,46 @@
 
     <div id="demo">
         <div id="demo1">
-          <b>Från: </b>
-          <select id="start">
-            <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
-            <option value="Liljeholmstorget 7, Stockholm">STI - Stockholm Tekniska Institut</option>
+
+
+   <!--Val av gångväg till olika stationer och från mig och skolan, start position-->
+            <div id="panel">
+
+                <div class="vag"> <b>Din gånväg: </b></div>
+               
+                <select id="start">
+                <option value="Barkarby Station, Järfälla">Barkarby Station</option>
+                <option value="Liljeholmen Tunnelbana, Liljeholmen">Liljeholmen, Tunnelbana </option>
+                <option value="Södra Station City, Stockholm">Södra Station</option>
+                <option value="Solna Station, Solna">Märsta Station</option>
+                <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
+                <option value="Liljeholmstorget 7, Stockholm">STI - Stockholm Tekniska Institut</option>
+
+                </select>
+
+       <!--Val av gångväg till olika stationer och från mig och skolan, slut position-->
+   
+
+                <select id="end">
+                    <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
+                    <option value="Liljeholmstorget 7, Stockholm">STI - Stockholm Tekniska Institut</option>
+                    <option value="Barkarby Station, Järfälla">Barkarby Station</option>
+                <option value="Liljeholmen Tunnelbana, Liljeholmen">Liljeholmen, Tunnelbana </option>
+                <option value="Södra Station City, Stockholm">Södra Station</option>
+                <option value="Solna Station, Solna">Märsta Station</option>
+                </select>
+                </div>
+         
+
+
+                <div id="map"></div>
+
+
             
-          </select>
-          <b>Till: </b>
-          <select id="end">
-              <option value="Barkarby Station, Järfälla">Barkarby Station</option>
-              <option value="Stockholm City, Stockholm">Stockholm City</option>
-              <option value="Liljeholmen Tunnelbana, Liljeholmen">Liljeholmen, Tunnelbana </option>
-              <option value="Södra Station City, Stockholm">Södra Station</option>
-              <option value="Märsta Station, Stockholm">Märsta Station</option>
-      
-          </select>
-          </div>
-          <div id="map"></div> 
-        
-     
+            </div>
+
+ 
+
 
       <div id="demo">  
 
@@ -112,7 +135,7 @@
         }
         
         const ul = document.getElementById('departures');
-        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=22';
         fetch(url)
           .then((resp) => resp.json())
           .then(function (data) {
@@ -121,8 +144,11 @@
               let li = createNode('li'),
                 span = createNode('span');
         
-        
-              span.innerHTML +=    "<br>"+ 'Tåg'+ " " +  '43 ' + ' ' + 'mot' + ' ' + departure.Destination + ' : ' +  " " + tiden(departure.DisplayTime) ;
+        var tag = "Tåg";
+var mot = " mot ";
+var m = " ";
+var s = ": ";
+              span.innerHTML +=  "<br>"+ tag + m  +  departure.LineNumber  + mot + departure.Destination + s  + tiden(departure.DisplayTime) ;
         
           
               append(li, span);
@@ -155,7 +181,7 @@
       
         const ul2 = document.getElementById('buss');
 
-        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=22';
         fetch(url)
           .then((resp) => resp.json())
           .then(function (data) {
@@ -176,7 +202,47 @@
             console.log(error);
           });
         
-    
+    //kod för map och gånvägen, visar med marker och gånväg
+          function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat: 59.331804, lng:18.06345}
+        });
+        directionsDisplay.setMap(map);
+
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+
+        // start stop val
+        document.getElementById('start').addEventListener('change', onChangeHandler);
+        document.getElementById('end').addEventListener('change', onChangeHandler);
+      }
+      // räknar ut rutten
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: document.getElementById('start').value,
+          destination: document.getElementById('end').value,
+          travelMode: 'WALKING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+
+
+
+
+
+
+
+// kod för klockan!
 function changeTime()
 {
 var today = new Date();
@@ -188,7 +254,7 @@ var secund = today.getSeconds();
 timme = checkTime(timme);
 minut = checkTime(minut);
 secund = checkTime(secund);
-
+// visar timme minut och sekund
 document.getElementById('timme').innerHTML = timme;
 document.getElementById('minut').innerHTML = minut;
 document.getElementById('secund').innerHTML = secund;
@@ -196,9 +262,7 @@ document.getElementById('secund').innerHTML = secund;
 
 
 }
-
-
-
+//intervall för klockan och kollar tiden
 setInterval("changeTime()", 1000);
 
 function checkTime(id){
@@ -211,10 +275,16 @@ return id;
 }
 }
 
+
+
+
+
+
+/*
    //TIMER
   
  // räknar ner till de datum som timern ska sluta
- var slut = new Date( "Jan 5, 2019 15:37:25" ).getTime();
+ var DisplayTime = new Date( "Jan 5, 2019 15:37:25" ).getTime();
  
  // Uppdaterar varje minut
  var x = setInterval(function() {
@@ -223,7 +293,7 @@ return id;
      var now = new Date().getTime();
      
      // Tiden mellan Displaytime och nu?
-     var distance = slut - now;
+     var distance = DisplayTime - now;
      
      // Tisräkning minuter och seccunder. ner
  
@@ -234,12 +304,12 @@ return id;
      document.getElementById("raknaned").innerHTML = +  minutes + " Min " + seconds + " Sec ";
      
      // If the count down is over, write some text 
-     if (distance < 10  ) {
-         clearInterval(window.location.reload(1));
-         document.getElementById("raknaned").innerHTML = "";
+     if (DisplayTime < 10 ) {
+         clearInterval(window.location.reload(5));
+         document.getElementById("raknaned").innerHTML = minutes;
      }
  },1000 );  
-
+*/
 
 // val av station från user
 var stationval = document.getElementById('val');
@@ -252,7 +322,13 @@ window.open(userVal.value, " Hej hopp","");
 
   }
 }
-    
+
+
+
+
+
+
+
 
 
 
@@ -274,24 +350,7 @@ function tiden(tabell)
     {
 
 
-            case "Nu":
-            level = " nu, Hejdå";
-            break;
-
-        case  "1 min":
-            level = "1 min kvar";
-            break;
-
-        case "2 min":
-            level = "2";
-            break;
-
-            case "3 min":
-            level = "3";
-            break;
-            case "4 min":
-            level = "4";
-            break;
+       
             case "5 min":
             level = "5, spring!";
             break;
@@ -309,13 +368,13 @@ function tiden(tabell)
             level = "8";
             break;
             case "10 min":
-            level = "10, Börja klä på dig!";
+            level = "10, börja klä på dig!";
             break;
             case "11 min":
             level = "11";
             break;
             case "12 min":
-            level = "12, börja göra dig ordning!";
+            level = "12, gör dig ordning!";
             break;
             case "13 min":
             level = "13 ";
@@ -324,7 +383,7 @@ function tiden(tabell)
             level = "14";
             break;
             case "15 min":
-            level = "15";
+            level = "15 minuter";
             break;
             case "16 min":
             level = "16";
@@ -333,7 +392,7 @@ function tiden(tabell)
             level = "17";
             break;
             case "18 min":
-            level = "18";
+            level = "18, gott om tid på dig!";
             break;
             case "19 min":
             level = "19";
@@ -359,15 +418,36 @@ function tiden(tabell)
             case "26 min":
             level = "26";
             break;
-        default: 
-            level = "  ";
-            break;
+     
 
     }
     return level;
     
 }
 
+
+
+
+            
+
+
+
+
+
+
+
+
+
+/* var span;
+
+function tab(){
+
+if (span == "Tåg" + "43" + mot + m + "Kungsängen" + s){
+  document.getElementById("INGET").innerHTML = tab(departure.LineNumber + departure.Destination);
+
+}
+}
+*/
 
 
 
@@ -381,7 +461,7 @@ function tiden(tabell)
 
 
       </script>
-               
+       
     
     </body>
     </html>

@@ -58,7 +58,7 @@ background-size: cover;
 .center {
   margin: auto;
   width: 60%;
-  background: linear-gradient(rgba(171, 255, 238, 0.7), rgba(95, 60, 255, 0.7)), url(train.jpg); height: 40vw; width: 85%;
+  background: linear-gradient(rgba(171, 255, 238, 0.7), rgba(95, 60, 255, 0.7)), url(train.jpg); height: 45vw; width: 90%;
    background-repeat: no-repeat; background-image: -moz-element();background-size: cover;
 
   padding: 10px;
@@ -173,6 +173,15 @@ text-align: justify;
       }  
 
 
+      #tunnelbana {
+
+        margin: 10px;
+font-size: 2vw;
+list-style-type: none;
+color: black;
+      } 
+
+
       #timme{
 
   float: left;
@@ -203,10 +212,11 @@ font-size: 5vw;
 
 
        #map {
-         position: right;
+         float: center;
         height: 40vw;
-        width: 100%;
-        border-radius: 90px;
+        width: 70vw;
+        margin-left: 13vw;
+        border-radius: 110vw;
       }
     
   #val{
@@ -230,16 +240,12 @@ box-shadow:  0 0 10vw;
       width: 100%;
     }
 
-    #tunnelbana {
-      margin: 10px;
-      color: red;
-    }
 
 
     .timer {
      float: center;
      margin-left: 22vw;
-     font-size: 3vw;
+     font-size: 1vw;
      margin-bottom:1vw; 
      font-weight: 900;
      color: rgb(12, 22, 56);
@@ -250,4 +256,43 @@ text-shadow:  1px 1px rgb(109, 114, 145);
       margin-bottom: 10vw;
       
     }
+
+   
+    #panel{
+   float:center;
+   margin-right: 10vw;
+  
+    }
+    #start{
+      float:rig;
+      border-radius: 50px;
+      width: 20vw;
+      margin-bottom: 10px;
+      height: 3vw;
+      font-size: 1.5vw;
+      margin-right: 10vw;
+      background: linear-gradient(rgb(231, 231, 255),rgb(87, 87, 255)), rgb(131, 223, 247);
+      box-shadow:  0 0 5ch;
+       }
+   
+       #end{
+        float: right;
+        margin-left: 10vw;
+        border-radius: 50px;
+        width: 20vw;
+        margin-bottom: 10px;
+           height: 3vw;
+           font-size: 1.5vw;
+
+           background: linear-gradient(rgb(231, 231, 255),rgb(87, 87, 255)), rgb(131, 223, 247);
+           box-shadow:  0 0 5ch;
+         }
+     
     
+         .vag{
+          float:left;
+          margin-right: 1.5vw;
+             
+           }
+       
+      

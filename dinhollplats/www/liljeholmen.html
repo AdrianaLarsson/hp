@@ -12,18 +12,26 @@
 </head>
 
 <body>
-    <h3>Liljeholmen Tunnelbana</h3>
 
+
+     <!---Javascript map api key-->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+     async defer></script> 
+     <!---Direction api key-->
+     <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZwH5T5o38qUfydWC4POwyerZ5VSLMjbo&callback=initMap">
+     </script>
+
+
+    <h2>Liljeholmen Tunnelbana</h2>
+    <div class="vanster">
 <!---Klockans function-->
   <body onload="changeTime()">
 
       <div id="timme">00</div><div id="minut">00</div><div id="secund">00</div>
-    <br>
-    <br>
-    <br>
-
+   
     <!---Länkar till barkarby station och till tunnelbanan i lijeholmen, val meny-->
-    
+    <form name="stationer">
     <select name="stationval" id="val">
         <option value="inget" selected="selected">Välj din Station</option>
         <option value ="#">Stockholm City<option>
@@ -34,33 +42,72 @@
     </select>
   </form>
 
-  <!---timer som räknar ned-->
-        
-     <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång</p>
-        <form name="stationer">
-    
-
-
-            <ul id="tunnelbana">Tunnelbana</ul>
-
-
-
-       
-
-
 
   
-     <!---Javascript map api key-->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
-     async defer></script> 
-     <!---Direction api key-->
-     <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZwH5T5o38qUfydWC4POwyerZ5VSLMjbo&callback=initMap">
-     </script>
+ 
 
 
+     <!-- <div class="timer">
+          <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång</p>
+         </div>-->
+  
+<br>
+<br>
+<br>
+<br>
+         <br>
+         <br>
+
+<!---timer som räknar ned-->
+
+      <div class="center">
+
+         
+            <ul id="tunnelbana"></ul>
+
+            
+      
+                  </div>
+                
+                  <div id="demo">
+                      <div id="demo1"></div>
+       
+                  </div>
+
+<div id="panel">
+                          <!--Div för att jag ska kuna styla den enskilt (ganvgag)-->
+                            <!--Val av gångväg till olika stationer och från mig och skolan, start position-->
+         
+                            <div class="vag"> <b>Din gånväg: </b></div>
+                          
+                      
+                          <select id="start">
+                            <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
+                            <option value="Liljeholmstorget 7, Stockholm">STI - Stockholm Tekniska Institut</option>
+                             <!--Val av gångväg till olika stationer och från mig och skolan, slut position-->
+                          </select>
+                          
+                          <select id="end">
+                              <option value="Barkarby Station, Järfälla">Barkarby Station</option>
+                              <option value="Liljeholmen Tunnelbana, Liljeholmen">Liljeholmen, Tunnelbana </option>
+                              <option value="Södra Station City, Stockholm">Södra Station</option>
+                              <option value="Solna Station, Solna">Märsta Station</option>
+                      
+                          </select>
+                         </form>      
+
+                         <div id="map"></div>
 
 
+            
+                        </div>
+            
+             
+            
+            
+                  <div id="demo">
+
+     
 
   <script language="javascript">
 
@@ -75,7 +122,7 @@
     }
 
     const ul3 = document.getElementById('tunnelbana');
-    const url4 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9294&timewindow=30';
+    const url4 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9294&timewindow=20';
     fetch(url4)
       .then((resp) => resp.json())
       .then(function (data) {
@@ -85,7 +132,7 @@
             img = createNode('img'),
             span = createNode('span');
 
-          span.innerHTML = `${departure.GroupOfLine + ":" + departure.LineNumber  + departure.DisplayTime }`;
+          span.innerHTML = `${"Tunnelbanans röda linje" + ": " + departure.LineNumber + " mot " + departure.Destination + " " + tiden(departure.DisplayTime) }`;
           append(li, img);
           append(li, span);
           append(ul3, li);
@@ -175,47 +222,104 @@ window.open(userVal.value, " Hej hopp","");
 
 
 
+var DisplayTime;
 
-stationval.onchange = function() {
-// väljer station ssom står i boxen ex liljeolmen
-  var userVal = this.options[this.selectedIndex];
-//öppnas nytt fönster pga att user väljer
-  if (userVal.value != "inget" ){
-window.open(userVal.value, " Hej hopp","");
+for(i=0; i <= 4; i++)
+{
+  DisplayTime += i + " " + tiden(i) + "<br>";
+}
+document.getElementById('tabell').innerHTML = departure.DisplayTime ;
 
-  }
+function tiden(tabell)
+{
+    var level = "";
+    switch (tabell)
+    {
+
+
+       
+            case "5 min":
+            level = "5, spring!";
+            break;
+            case "7 min":
+            level = "7, gå ut genom dörren!";
+            break;
+              case "6 min":
+            level = "6";
+            break;
+
+            case "9 min":
+            level = "9";
+            break;
+            case "8 min":
+            level = "8";
+            break;
+            case "10 min":
+            level = "10, börja klä på dig!";
+            break;
+            case "11 min":
+            level = "11";
+            break;
+            case "12 min":
+            level = "12, gör dig ordning!";
+            break;
+            case "13 min":
+            level = "13 ";
+            break;
+            case "14 min":
+            level = "14";
+            break;
+            case "15 min":
+            level = "15 minuter";
+            break;
+            case "16 min":
+            level = "16";
+            break;
+            case "17 min":
+            level = "17";
+            break;
+            case "18 min":
+            level = "18, gott om tid på dig!";
+            break;
+            case "19 min":
+            level = "19";
+            break;
+            case "20 min":
+            level = "20";
+            break; 
+            case "21 min":
+            level = "20";
+            break;
+            case "22 min":
+            level = "22";
+            break;
+            case "23 min":
+            level = "23";
+            break;
+            case "24 min":
+            level = "24";
+            break;
+             case "25 min":
+            level = "25";
+            break;
+            case "26 min":
+            level = "26";
+            break;
+     
+
+    }
+    return level;
+    
 }
 
 
 
 
-  </script>
-     <div id="demo">
-        <div id="demo1">
-<!--Div för att jag ska kuna styla den enskilt (ganvgag)-->
-          <div name="gangvag">Lägg till gånväg</div>
-          <!--Val av gångväg till olika stationer och från mig och skolan, start position-->
-          <b>Från: </b>
-          <select id="start">
-            <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
-            <option value="Liljeholmstorget 7, Stockholm">STI - Stockholm Tekniska Institut</option>
-             <!--Val av gångväg till olika stationer och från mig och skolan, slut position-->
-          </select>
-          <b>Till: </b>
-          <select id="end">
-              <option value="Barkarby Station, Järfälla">Barkarby Station</option>
-              <option value="Liljeholmen Tunnelbana, Liljeholmen">Liljeholmen, Tunnelbana </option>
-              <option value="Södra Station City, Stockholm">Södra Station</option>
-              <option value="Solna Station, Solna">Märsta Station</option>
-      
-          </select>
-          </div>
-        
-        
-  <div id="map"></div>              
-    <div id="map">
-      <div id="demo"></div>
 
+
+
+  </script>
+  
 
 
 </body>
