@@ -1,0 +1,14 @@
+tr7yMin hållplats app
+
+Se när nästa buss, tunnelbana eller pendeltåg går från just din hållplats.
+? Se det som en informationstavla I mobilen.
+? Först väljer man hållplats, och sedan var man brukar åka.
+? Därefter visas en informationstavla som uppdateras varje minut.
+? Då antalet anrop till Trafiklab är begänsat, måste mellanliggande tider beräknas I
+appen.
+? Det ska vara möjligt att lägga till eventuell gångväg, och därefter räknar appen ner till då det är dags att gå hemifrån.
+Plats info med nära och kära, en knapp att välja vem och om man vill dela platsinfo med sin vän (så man kan se han/hons plats info och att hen kan se sin)
+* Notiser - Kunna välja om man vill ha information Om * bussen/tåget/tunnebalbanan om den är sen lr inte. Ock kaunna se vart ditt tåg befinner sig.
+* Priser om SJ SL och BUSS
+* Appen ska kunna skänna av vart man är så man inte behöver skriva i vart man är, utan bara bekräfta.
+ 

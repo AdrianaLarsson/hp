@@ -1,0 +1,302 @@
+*{
+  margin: 0px;
+padding: 0px;
+ 
+}
+
+
+
+body{
+
+   background-image: linear-gradient(to right, rgb(159, 228, 255) , rgb(0, 101, 253), rgb(0, 44, 139), rgb(143, 229, 255));
+
+}
+
+h1{
+    
+font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+text-align: left;
+ font-size: 4vw;
+ padding: 70px;
+ font-style: oblique;
+ font-variant: small-caps;
+ color: rgb(8, 0, 83);
+text-shadow: 1.2px  rgb(0, 0, 0);
+box-shadow: 30px;
+
+
+}
+
+
+h2{
+    text-align: center;
+    font-size: 5vw;
+    color: white;
+    
+      }
+    
+
+
+
+.header{
+
+
+
+   background-repeat: no-repeat;
+ background-image: -moz-element();
+ height: 35vw;
+ background-position: center;
+
+ background: linear-gradient(rgba(171, 255, 238, 0.7), rgba(95, 60, 255, 0.7)), url(train.jpg); height: 50vw; 
+-webkit-background-size: cover;
+background-size: cover;
+
+
+
+}
+.center {
+  margin: auto;
+  width: 60%;
+  background: linear-gradient(rgba(171, 255, 238, 0.7), rgba(95, 60, 255, 0.7)), url(train.jpg); height: 45vw; width: 90%;
+   background-repeat: no-repeat; background-image: -moz-element();background-size: cover;
+
+  padding: 10px;
+margin-top: 10px;
+margin-bottom: 10px;
+border-radius: 50px;
+}
+
+
+form {
+
+  float: right;
+margin-top: -5vw;
+  margin-right: 2vw;
+ 
+  
+    }
+    input {
+      
+width: 100%;
+height: 10vw;
+        float: right;
+  
+        margin-right: 10vw;
+       box-sizing: border-box;
+border-width: 20%;
+       border:solid;
+border-radius: 70vw; 
+      color: rgb(101, 171, 252);
+          }
+        
+
+          .eller {
+padding-left: 45px;
+            float: center;
+         color: white;
+           
+            
+              }
+
+              .eller {
+                padding-left: 70px;
+                            float: center; 
+                            font-size: 5vw;
+                    
+                            
+                              }
+                  
+
+  
+                              input[type=button1] {
+                                background: linear-gradient(rgb(231, 231, 255),rgb(87, 87, 255)), rgb(131, 223, 247);
+                       text-align: center; color: white;
+                       font-size: 4vw;
+                       height: 15vw;
+                       border-width: 30%;
+                                }
+                                .loggain {
+                                  padding-left:-5px;
+                                              float: center;
+                                           color: white;
+                                           font-size: 5vw;
+                                
+                                             
+                                              
+                                                }
+
+                                                .registrera {
+                                        
+                                                              float: left;
+                                                           color: rgb(0, 0, 0);
+                                                           font-size: 3.5vw;
+                                                              max-width: 100vw;
+                                                           height: 2vw;
+                                                           padding-left: 10vw;
+                                                    padding-top: 10vw;
+                                                              
+                                                                }
+                                           
+       ul{
+         color: rgb(255, 255, 255);
+text-align: center;
+font-size: 1.5vw;
+       }  
+
+      
+       
+       #departures {
+         float: right;
+        
+font-size: 2vw;
+margin-right: 1vw;
+list-style-type: none;
+color: black;
+font-weight: bold;
+text-align: justify;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       } 
+       #buss {
+         
+        float:left;
+        font-size: 2vw;
+        margin-left: 1vw;
+        list-style-type: none;
+        color: rgb(0, 0, 0);
+          /* tjockare text */
+        font-weight: 900;
+        /* jusify gör att man läser den frånvänster till höger */
+        text-align: justify;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+      }  
+
+
+      #tunnelbana {
+
+        margin: 10px;
+font-size: 3vw;
+list-style-type: none;
+color: black;
+font-weight: 900;
+text-decoration-style: wavy;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      } 
+
+
+      #timme{
+
+  float: left;
+  margin-right: 1vw;
+padding: 1vw;
+box-shadow: 0 0 10vw;
+border-radius: 20px;
+font-size: 5vw;
+      }  
+  
+      #minut{
+        float: left;
+        margin-right: 1vw;
+        padding: 1vw;
+        box-shadow: 0 0 10vw;
+        border-radius: 20px;
+        font-size: 5vw;
+      }  
+
+      #secund{
+        float: left;
+        margin-right: 1vw;
+        padding: 1vw;
+        box-shadow: 0 0 10vw;
+        border-radius: 20px;
+        font-size: 5vw;
+      }  
+
+
+       #map {
+         float: center;
+        height: 40vw;
+        width: 70vw;
+        margin-left: 13vw;
+        border-radius: 110vw;
+      }
+    
+  #val{
+    float: right;
+width: 20vw;
+padding: 1vw;
+margin-top:-7vw;
+margin-bottom: -15% ; 
+
+margin-left: 72vw;
+border-radius: 50px;
+text-align: center; color: rgb(0, 0, 0);
+font-size: 2vw;
+background:linear-gradient(rgb(119, 128, 255),rgb(185, 227, 255)), rgb(131, 223, 247);
+box-shadow:  0 0 10vw;
+
+    }   
+    
+    #mapprofil {
+      height: 400px;
+      width: 100%;
+    }
+
+
+
+    .timer {
+     float: center;
+     margin-left: 22vw;
+     font-size: 1vw;
+     margin-bottom:1vw; 
+     font-weight: 900;
+     color: rgb(12, 22, 56);
+text-shadow:  1px 1px rgb(109, 114, 145);
+    }
+    .klockan{
+      margin-top: -4vw;
+      margin-bottom: 10vw;
+      
+    }
+
+   
+    #panel{
+   float:center;
+   margin-right: 10vw;
+  
+    }
+    #start{
+      float:rig;
+      border-radius: 50px;
+      width: 20vw;
+      margin-bottom: 10px;
+      height: 3vw;
+      font-size: 1.5vw;
+      margin-right: 10vw;
+      background: linear-gradient(rgb(231, 231, 255),rgb(87, 87, 255)), rgb(131, 223, 247);
+      box-shadow:  0 0 5ch;
+       }
+   
+       #end{
+        float: right;
+        margin-left: 10vw;
+        border-radius: 50px;
+        width: 20vw;
+        margin-bottom: 10px;
+           height: 3vw;
+           font-size: 1.5vw;
+
+           background: linear-gradient(rgb(231, 231, 255),rgb(87, 87, 255)), rgb(131, 223, 247);
+           box-shadow:  0 0 5ch;
+         }
+     
+    
+         .vag{
+          float:left;
+          margin-right: 1.5vw;
+             
+           }
+       
+      
