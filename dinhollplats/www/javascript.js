@@ -18,6 +18,7 @@ function initMap() {
     directionsService.route({
       origin: document.getElementById('start').value,
       destination: document.getElementById('end').value,
+      infoWindow: true,
       travelMode: google.maps.TravelMode.WALKING
       
     }, function(response, status) {
@@ -68,17 +69,17 @@ if(value.options == "StockholmCity"){
     document.getElementById("demo5").innerHTML = "Error, vi kan inte ta upp tidtabellen";
 }};*/
 
-// val av station från user
-var stationval = document.getElementById('val');
-stationval.onchange = function() {
-// väljer station ssom står i boxen ex liljeolmen
-  var userVal = this.options[this.selectedIndex];
-//öppnas nytt fönster pga att user väljer
-  if (userVal.value != "inget" ){
-window.open(userVal.value, " Hej hopp","");
+// // val av station från user
+// var stationval = document.getElementById('val');
+// stationval.onchange = function() {
+// // väljer station ssom står i boxen ex liljeolmen
+//   var userVal = this.options[this.selectedIndex];
+// //öppnas nytt fönster pga att user väljer
+//   if (userVal.value != "inget" ){
+// window.open(userVal.value, " Hej hopp","");
 
-  }
-}
+//   }
+// }
 
   
 
@@ -89,36 +90,36 @@ window.open(userVal.value, " Hej hopp","");
 //},100000);
 
 
-      
- 
- //TIMER
+      //  //TIMER
   
- // Set the date we're counting down to
- var DisplayTime = new Date("Jan 5, 2019 15:37:25" ).getTime();
+//  // Set the date we're counting down to
+//  var DisplayTime = new Date("Jan 5, 2019 15:37:25" ).getTime();
  
- // Uppdaterar varje minut
- var x = setInterval(function() {
+//  // Uppdaterar varje minut
+//  var x = setInterval(function() {
  
-     // Dagens tid
-     var now = new Date().getTime();
+//      // Dagens tid
+//      var now = new Date().getTime();
      
-     // Tiden mellan Displaytime och nu?
-     var distance = DisplayTime - now;
+//      // Tiden mellan Displaytime och nu?
+//      var distance = DisplayTime - now;
      
-     // Tisräkning minuter och seccunder. ner
+//      // Tisräkning minuter och seccunder. ner
  
-     var minutes = Math.floor((distance % (200 * 60 * 60)) / (1000 * 60));
-     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//      var minutes = Math.floor((distance % (200 * 60 * 60)) / (1000 * 60));
+//      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
      
-     // Output the result in an element with id="demo"
-     document.getElementById("raknaned").innerHTML =  minutes + " Min " + seconds + " Sec ";
+//      // Output the result in an element with id="demo"
+//      document.getElementById("raknaned").innerHTML =  minutes + " Min " + seconds + " Sec ";
      
-     // If the count down is over, write some text 
-     if (DisplayTime < 10 ) {
-         clearInterval(window.location.reload(1));
-         document.getElementById("raknaned").innerHTML = minutes;
-     }
- },1000 ); 
+//      // If the count down is over, write some text 
+//      if (DisplayTime < 10 ) {
+//          clearInterval(window.location.reload(1));
+//          document.getElementById("raknaned").innerHTML = minutes;
+//      }
+//  },1000 ); 
+ 
+
   
 // Inloggning
 
@@ -157,7 +158,7 @@ function clicked() {
 function changeTime()
 {
 var today = new Date();
-
+//timme minut sekund var
 var timme = today.getHours();
 var minut = today.getMinutes();
 var secund = today.getSeconds();
@@ -175,7 +176,7 @@ document.getElementById('secund').innerHTML = secund;
 }
 
 
-
+// intervall klockan
 setInterval("changeTime()", 1000);
 
 function checkTime(id){
@@ -187,3 +188,51 @@ return id;
 
 }
 }
+
+
+
+
+
+// <!-- 
+//     //Pendeltåg Barkarby
+        
+//     function createNode(element) {
+//           return document.createElement(element);
+//         }
+        
+//         function append(parent, el) {
+//           return parent.appendChild(el);
+//         }
+        
+//         const ul = document.getElementById('departures');
+//         const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=22';
+//         fetch(url)
+//           .then((resp) => resp.json())
+//           .then(function (data) {
+//             let departures = data.ResponseData.Trains;
+//             return departures.map(function (departure) {
+//               let li = createNode('li'),
+//                 span = createNode('span');
+
+                     
+//                  var tidattGa = 5;
+//                 if(departure.DisplayTime == "Nu"){
+//                  departure.DisplayTime = "0 min", "";
+
+//                 }
+//                 var dt = departure.DisplayTime.replace(" min","");
+//                 var Dt = Dt - 5;
+//                 if (Dt > 0)
+//                 {
+//               span.innerHTML +=   departure.LineNumber  + mot + departure.Destination + s  + departure.DisplayTime + Dt ;
+//             }
+          
+//               append(li, span);
+//               append(ul, li);
+//             })
+//           })
+//           .catch(function (error) {
+//             console.log(error);
+//           });
+//          -->
+

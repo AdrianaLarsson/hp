@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/javascript" src="javascript.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>stationsval</title>
+</head>
+
+<body>
+
+    
+  
+     <!---Javascript map api key-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+        async defer></script> 
+        <!---Direction api key-->
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZwH5T5o38qUfydWC4POwyerZ5VSLMjbo&callback=initMap">
+        </script>
+
+<body onload="changeTime()">
+
+  <div id="timme">00</div>:<div id="minut">00</div>:<div id="secund">00</div>
+
+
+<p id="raknaned" class="timer">10 minuter till att gå til nästa avgång </p>
+
+<div id="floating-panel">
+ 
+   
+    
+   
+    <p id="demo">Buss2</p><br>
+ 
+    <ul id="departures">Pendeltåg<br><br></ul> 
+    <ul id="buss">Bussar<br><br></ul>
+
+
+    <b>Val av station: </b>
+    <p id="demo5"></p>
+    
+    <form name="stationer">
+           
+
+        <select name="stationval" id="val">
+            <option value="inget" selected="selected">Välj stationen du vill ha</option>
+          <option value ="barkarbystation.html">Barkarby station</option>
+          <option value ="liljeholmen.html"> Liljeholmen Tuben<option>
+          
+        </select>
+      </form>
+
+    <p id="demo3">Demo tre</p><br>
+
+  
+
+  
+    <body>
+        
+
+  
+
+            <script language="javascript">
+       
+     //Pendeltåg Barkarby
+        
+     function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        const ul = document.getElementById('departures');
+        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures = data.ResponseData.Trains;
+            return departures.map(function (departure) {
+              let li = createNode('li'),
+                span = createNode('span');
+        
+        
+            //  span.innerHTML +=  'Tåg'+ +  '43 ' + ' ' + 'mot' + ' ' + departure.Destination + ' : ' + departure.DisplayTime ;
+        
+          
+              append(li, span);
+              append(ul, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+
+
+          // Bussar Barkaraby
+        function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        var hej = "";
+        
+        document.getElementById("demo").innerHTML = hej;
+        const ul2 = document.getElementById('buss');
+        
+        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures1 = data.ResponseData.Buses;
+            return departures1.map(function (departure) {
+              let li = createNode('li'),        
+                span = createNode('span');
+        
+        
+            //  buss.innerHTML += `${   departure.LineNumber + ' '  + ' mot '+ '  ' + departure.Destination + ' : ' + departure.DisplayTime}` ;
+              // ga(departure.DisplayTime)}` ;
+        
+              append(li, span);
+              append(ul1, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+ 
+          var stationval = document.getElementById('val');
+
+
+
+stationval.onchange = function() {
+// väljer station ssom står i boxen ex liljeolmen
+  var userVal = this.options[this.selectedIndex];
+//öppnas nytt fönster pga att user väljer
+  if (userVal.value != "inget" ){
+window.open(userVal.value, " Hej hopp","");
+
+  }
+}
+
+
+       
+
+function changeTime()
+{
+var today = new Date();
+
+var timme = today.getHours();
+var minut = today.getMinutes();
+var secund = today.getSeconds();
+
+timme = checkTime(timme);
+minut = checkTime(minut);
+secund = checkTime(secund);
+
+document.getElementById('timme').innerHTML = timme;
+document.getElementById('minut').innerHTML = minut;
+document.getElementById('secund').innerHTML = secund;
+
+
+
+}
+
+
+
+setInterval("changeTime()", 1000);
+
+function checkTime(id){
+if (id < 10)
+id = "0" + id;
+{
+
+return id;
+
+}
+}
+
+   //TIMER
+  
+ // Set the date we're counting down to
+ var DisplayTime = new Date("Jan 5, 2019 15:37:25" ).getTime();
+ 
+ // Uppdaterar varje minut
+ var x = setInterval(function() {
+ 
+     // Dagens tid
+     var now = new Date().getTime();
+     
+     // Tiden mellan Displaytime och nu?
+     var distance = DisplayTime - now;
+     
+     // Tisräkning minuter och seccunder. ner
+ 
+     var minutes = Math.floor((distance % (200 * 60 * 60)) / (1000 * 60));
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+     
+     // Output the result in an element with id="demo"
+     document.getElementById("raknaned").innerHTML =  minutes + " Min " + seconds + " Sec ";
+     
+     // If the count down is over, write some text 
+     if (DisplayTime < 10 ) {
+         clearInterval(window.location.reload(1));
+         document.getElementById("raknaned").innerHTML = minutes;
+     }
+ },1000 );  
+
+
+
+
+
+
+    
+      </script>    </body>
+    </html>

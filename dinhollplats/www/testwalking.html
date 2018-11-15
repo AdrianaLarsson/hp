@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <link rel="stylesheet" type="text/css" href="design.css">
+  
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>test walking</title>
+</head>
+
+<body>
+
+    
+  
+   
+        <ul id="departures">Pendeltåg<br><br></ul><br>
+
+        <ul id="buss">Bussar<br><br></ul>
+
+       
+                  <script language="javascript">
+       
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        const ul = document.getElementById('departures');
+        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=22';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures = data.ResponseData.Trains;
+            return departures.map(function (departure) {
+              let li = createNode('li'),
+                span = createNode('span');
+        
+// varibler för att få in textsträng
+
+  
+          
+              var walkingtime = 5;
+             if(departure.DisplayTime == "Nu"){
+             departure.DisplayTime = "0 min";
+             }
+            var dt = departure.DisplayTime.replace(" min", "");
+            dt = dt - walkingtime;
+            if(dt > 0)
+            {
+            span.innerHTML += `${departure.LineNumber +" mot "+ departure.Destination + " " + dt + "<br>" }`;
+            append(li, span);
+             append(ul, li);
+            }
+
+
+            
+            })
+            })
+            .catch(function (error) {
+            console.log(error);
+             });
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+        // Bussar från barakarby station
+       
+        function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+      
+        const ul2 = document.getElementById('buss');
+
+        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=22';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures2 = data.ResponseData.Buses;
+            return departures2.map(function (departure) {
+              let li = createNode('li'),
+                span = createNode('span');
+        
+                var walkingt = 5;
+             if(departure.DisplayTime == "Nu"){
+             departure.DisplayTime = "0 min";
+             }
+            var disp = departure.DisplayTime.replace(" min", "");
+            disp = disp - walkingt;
+            if(disp > 0)
+            {
+            buss.innerHTML += `${departure.LineNumber +" mot "+ departure.Destination + " " + disp + "<br>"}`;
+            append(li, span);
+             append(ul2, li);
+            }
+
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+    </script>
+       
+    
+</body>
+</html>

@@ -155,6 +155,7 @@ list-style-type: none;
 color: black;
 font-weight: bold;
 text-align: justify;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
        } 
        #buss {
          
@@ -162,13 +163,13 @@ text-align: justify;
         font-size: 2vw;
         margin-left: 1vw;
         list-style-type: none;
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
           /* tjockare text */
         font-weight: 900;
         /* jusify gör att man läser den frånvänster till höger */
         text-align: justify;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-        text-shadow: 1px 2px rgb(5, 50, 253);
 
       }  
 
@@ -176,9 +177,12 @@ text-align: justify;
       #tunnelbana {
 
         margin: 10px;
-font-size: 2vw;
+font-size: 3vw;
 list-style-type: none;
 color: black;
+font-weight: 900;
+text-decoration-style: wavy;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       } 
 
 

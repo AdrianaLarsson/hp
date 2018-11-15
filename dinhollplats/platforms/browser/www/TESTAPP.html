@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/javascript" src="javascript.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Server date/time</title>
+</head>
+<style>
+#map{
+  height: 30vw;
+  width: 50%;
+}
+</style>
+<body>
+
+  
+
+    <body onload="changeTime()">
+
+        <div id="timme">00</div>:<div id="minut">00</div>:<div id="secund">00</div>
+
+    
+    <p id="raknaned" class="timer">10 minuter till att gå til nästa avgång 
+     <!---Javascript map api key-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+        async defer></script> 
+         <!---Direction api key-->
+         <script async defer
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZwH5T5o38qUfydWC4POwyerZ5VSLMjbo&callback=initMap">
+         </script>
+
+    </p> 
+<br>
+<br>
+
+    
+    <br>
+
+    <br>
+
+
+
+
+<br>
+<br>
+
+
+        <ul id="departures">Pendeltåg<br><br></ul>
+       
+    
+        <p id="demo">Buss2</p><br>
+        <ul id="buss">Bussar<br><br></ul>
+        <p id="demo3"></p><br>
+        
+        <br>
+        <br>
+
+        <b>Val av station: </b>
+        <select id="stationval">
+          <option value="BarkarbyStation">Barkarby Station</option>
+          <option value="StockholmCity">Stockholm City Station</option>
+        
+        
+        
+        <input type="text" id="autocompletet">
+        <div id="map"></div>
+        
+        
+        
+        
+        
+ 
+            <b>Start: </b>
+            <select id="start">
+              <option value="Vinggränd 4, Barkarby">Vinggränd 4. Järfälla</option>
+            
+              
+            </select>
+            <b>End: </b>
+            <select id="end">
+                <option value="">Till</option>
+                <option value="Barkarby Station, Järfälla">Barkarby Station</option>
+                <option value="Stockholm City, Stockholm">Stockholm City</option>
+                <option value="Solna Station, Solna">Solna station </option>
+                <option value="Södra Station City, Stockholm">Södra Station</option>
+                <option value="Märsta Station, Stockholm">Märsta Station</option>
+        
+            </select>
+            </div>
+            <div id="map"></div>
+    
+
+        
+        
+        <script language="javascript">
+          //Pendeltåg Barkarby
+        
+          function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        const ul = document.getElementById('departures');
+        const url = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures = data.ResponseData.Trains;
+            return departures.map(function (departure) {
+              let li = createNode('li'),
+                span = createNode('span');
+        
+        
+              span.innerHTML += 'Tåg'+ +  '43 ' + ' ' + 'mot' + ' ' + departure.Destination + ' : ' + departure.DisplayTime ;
+        
+          
+              append(li, span);
+              append(ul, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+        function createNode(element) {
+          return document.createElement(element);
+        }
+        
+        function append(parent, el) {
+          return parent.appendChild(el);
+        }
+        
+        var hej = "";
+        
+        document.getElementById("demo").innerHTML = hej;
+        const ul2 = document.getElementById('buss');
+        //Buss
+
+
+        const url1 = 'https://cors-anywhere.herokuapp.com/http://api.sl.se/api2/realtimedeparturesV4.json?key=12d14745f7214de793ab164ca32fedbf&siteid=9703&timewindow=30';
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let departures2 = data.ResponseData.Buses;
+            return departures2.map(function (departure) {
+              let li = createNode('li'),        
+                span = createNode('span');
+        
+        
+              buss.innerHTML += `${   departure.LineNumber + ' '  + ' mot '+ '  ' + departure.Destination + ' : ' + departure.DisplayTime}` ;
+              // ga(departure.DisplayTime)}` ;
+        
+              append(li, span);
+              append(ul2, li);
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+
+//setTimeout(function(){
+  //window.location.reload(1);
+//},100000);
+
+
+        
+
+// kod för att får ett fönster komma upp och fråga efter nuvarande plats på kartan.
+
+     /*
+ if (navigator.geolocation) { 
+  navigator.geolocation.getCurrentPosition(function(position) {  
+
+    var point = new google.maps.LatLng(position.coords.latitude, 
+  position.coords.longitude);
+
+    // 
+    var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 15,
+      center: point,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    //marker som visar vart du är
+    new google.maps.Marker({
+      position: point,
+      map: map
+    });
+  }); 
+} 
+else {
+  alert('Får jag veta din plats?');
+} 
+ */
+ 
+ 
+ 
+ 
+ 
+   // mappen funktion
+  /* var map;
+   function initMap() {
+       map = new google.maps.Map(document.getElementById('map'),{
+ 
+           //latitud longitud, vart jag är
+           center:{lat:59.33258, lng:18.0649},
+           zoom: 9,
+           });
+ 
+ // marker som visar vart exakt
+           var marker = new google.maps.Marker({
+               position: {lat:59.33258, lng:18.0649},
+               map: map,
+               // text som säger vart jag är
+               title: 'Hejhej',
+               druggle: true
+           });
+ 
+            }*/
+ 
+ 
+
+ /*
+ var x = document.getElementById("demo");
+     
+     function getLocation() {
+         if (navigator.geolocation) {
+             jlocation.getCurrentPosition(succes, failure);
+         } else { 
+             x.innerHTML = "wdkmsdmsmsikdmlsmkldsm";
+         }
+     }
+     // positionen som visar innan den frågas av curent position
+     function showPosition(position) {
+         x.innerHTML = "Latitude: " + {lat:59.33258, lng:18.0649 }  + 
+         "<br>Longitude: " + marker  + position.coords.longitude + jlocation;
+     }
+ */
+ 
+
+
+
+   
+
+        
+      //  function ga(DisplayTime){
+        
+        //  if(DisplayTime == "5"){
+        
+        //}
+        
+       //return "Fem minuter kvar";
+        
+        
+        
+        //}
+        
+function ValjStation()
+var stock = document.getSelection('stockholmCity').value
+if (selection === "stockholcity"){
+return 'error'
+
+}
+
+
+  </script>
+
+
+
+    <div id="navbar"><span>google maps</span></div>
+    <div id="wrapper">
+      
+        
+    
+
+
+            <div id="demo">
+
+               
+                    <div id="demo1">
+
+                      
+                    
+
+</body>
+</html>

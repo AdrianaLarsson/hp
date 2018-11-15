@@ -1,0 +1,227 @@
+//var marker = new google.maps.Map{{
+    //position:{lat:59.33258, lng: 18.0649},
+    //map: map,
+      
+        
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    //var jlocation = navigator.geolocation;
+    /* This is
+    a comment 
+    jlocation.getCurrentPosition(succes, failure)
+    
+    function succes(position)
+    
+    {
+     var minLat = position.coords.latitude;
+     var minLong = position.coords.latitude;
+    
+     var coords = new google.maps.LatLng(minLat, minLong);
+    
+     var mapOptions = {
+    zoom:11,
+    
+    position: {lat:59.33258, lng: 18.0649},
+    
+    mapTypeId: google.maps.MaptypeId,
+    
+     }
+    
+    var map = new google.maps.Map(document.getElementById("demo1") + marker + mapOptions + minLat + jlocation);
+    var marker = new google.maps.Marker({map:map,position:coords});
+    
+    
+    
+    }
+    
+    function failure(){}
+    
+    
+    
+        var x = document.getElementById("demo");
+        
+        function getLocation() {
+            if (navigator.geolocation) {
+                jlocation.getCurrentPosition(succes, failure);
+            } else { 
+                x.innerHTML = "wdkmsdmsmsikdmlsmkldsm";
+            }
+        }
+        
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + minLong + minLat + position.coords.latitude + 
+            "<br>Longitude: " + marker  + position.coords.longitude + jlocation;
+        }
+    
+    
+    
+    function initMap(){
+    var options = {
+    zoom:10,
+    center:{lat:59.33258, lng: 18.0649},
+    }
+    
+    var map = new google.maps.Map(document.getElementById('map'), options);*/
+    
+    
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+    type="text/javascript"></script>
+    
+    var map = new google.maps.Map(document.getElementById('map-canvas'),{
+
+    center :{lat:59.33258, lng: 18.0649 },
+    zoom:15
+
+    });
+    
+
+
+
+
+
+
+
+    var jlocation = navigator.geolocation;
+
+jlocation.getCurrentPosition(succes, failure)
+
+function succes(position)
+
+{
+ var minLat = position.coords.latitude;
+ var minLong = position.coords.latitude;
+
+ var coords = new google.maps.LatLng(minLat, minLong);
+
+ var mapOptions = {
+zoom:11,
+
+position: {lat:59.33258, lng: 18.0649},
+
+mapTypeId: google.maps.MaptypeId,
+
+ }
+
+var map = new google.maps.Map(document.getElementById("demo1") + marker + mapOptions + minLat + jlocation);
+var marker = new google.maps.Marker({map:map,position:coords});
+
+
+
+}
+
+function failure(){}
+
+
+
+    var x = document.getElementById("demo");
+    
+    function getLocation() {
+        if (navigator.geolocation) {
+            jlocation.getCurrentPosition(succes, failure);
+        } else { 
+            x.innerHTML = "wdkmsdmsmsikdmlsmkldsm";
+        }
+    }
+    
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + minLong + minLat + position.coords.latitude + 
+        "<br>Longitude: " + marker  + position.coords.longitude + jlocation;
+    }
+
+
+
+
+
+
+
+
+    <!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<style>
+#map{
+    height: 400px;
+    width: 100%;
+}
+</style>
+
+<title>My google map</title>
+</head>
+<body>
+
+    <h1>my google map</h1>
+    <div id="navbar"><span>goggle maps </span></div>
+        <input type="text" id="mapsök">
+        <div id="map-canvas"></div>
+        <div id="wrapper">
+     <div id="map"></div>
+     <div id="map1"></div>
+
+     <p id="demo"></p>
+     <button onclick="getLocation()">Try It</button>
+<button onclick="showPosition()">är</button>
+
+<script>
+
+
+
+
+   
+
+
+
+    //var marker = new google.maps.Map{{
+//position:{lat:59.33258, lng: 18.0649},
+//map: map,
+  
+
+
+
+function initMap(){
+var options = {
+zoom:10,
+center:{lat:59.33258, lng: 18.0649},
+}
+
+var map = new google.maps.Map(document.getElementById('map'), options);
+
+}
+    
+
+
+function initMap(){
+    var map;
+    var map = new google.maps.Map(document.getElementById('map-canvas'),{
+center:{lat:59.33258, lng: 18.0649},
+zoom:15
+
+
+});
+
+var marker = new google.maps.Marker({
+    position:{lat: 59.33258, lng: 18.0649},
+        map: map,
+        title: 'Hej adriana',
+        });
+
+  
+}
+</script>
+
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVnpUr3bDY4WLwSQg2142OSu43TwGSkA&callback=initMap"
+  async defer></script>
+
+</body>
+</html>
